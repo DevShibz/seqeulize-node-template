@@ -2,14 +2,18 @@ import { Model, DataTypes } from 'sequelize';
 import { sequelize } from '../config/database';
 import { Address } from './address.model';
 
-export class User extends Model {
+export class Users extends Model {
   public id!: number;
   public name!: string;
   public email!: string;
-
+  public password!: string;
+  public profile_picture_url?: string;
+  public gender?: string;
+  public dob?: Date;
+  public contact_no?: string;
 }
 
-User.init(
+Users.init(
   {
     name: {
       type: DataTypes.STRING,
@@ -19,14 +23,30 @@ User.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
+    password: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    profile_picture_url: {
+      type: DataTypes.STRING,
+    },
+    gender: {
+      type: DataTypes.STRING,
+    },
+    dob: {
+      type: DataTypes.DATEONLY,
+    },
+    contact_no: {
+      type: DataTypes.STRING,
+    },
   },
   {
     sequelize,
-    tableName: 'users',
+    tableName: 'Users',
   }
 );
 
-User.hasMany(Address, {
+Users.hasMany(Address, {
   foreignKey: 'userId',
   as: 'addresses'
 });

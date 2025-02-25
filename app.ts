@@ -23,7 +23,6 @@ app.use('/', router);
 sequelize.authenticate()
   .then(() => {
     console.log('Database connected');
-    return sequelize.sync();
   })
   .then(() => {
     const PORT = process.env.PORT || 3000;
