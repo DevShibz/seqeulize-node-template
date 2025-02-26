@@ -7,6 +7,8 @@ import imageRoute from './image.routes'
 import productImageRoute from './productImage.routes'
 import cartRoute from './cart.routes'
 import orderRoute from './order.routes'
+import bannerRoute from './banner.routes'
+import layoutRoute from './layout.routes'
 const router = Router();
 
 router.use('/user', userRoutes);
@@ -17,4 +19,6 @@ router.use('/images',imageRoute)
 router.use('productImage',productImageRoute)
 router.use('/cart',cartRoute)
 router.use('/order',orderRoute)
+router.use('/banner',bannerRoute)
+router.use('/layout',layoutRoute)
 export default router; 
