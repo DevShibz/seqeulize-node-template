@@ -1,0 +1,33 @@
+Orders
+npx sequelize-cli model:generate --name Orders --attributes user_id:integer,product_id:integer,price:integer,delievery_charge:integer,address_id:integer
+
+Cart
+npx sequelize-cli model:generate --name cart --attributes product_id:string,quantity:number,user_id:integer
+
+Product Description
+npx sequelize-cli model:generate --name ProductDetails --attributes product_type:string,product_info:json
+
+Images
+npx sequelize-cli model:generate --name Images --attributes,image_url:string,alt_text:string
+
+Product
+npx sequelize-cli model:generate --name Product --attributes name:string,price:decimal,sku:string,stock:integer,product_type:string,product_info:json category_id:integer
+
+Product Images
+npx sequelize-cli model:generate --name ProductImage --attributes product_id:integer,image_url:string,alt_text:string
+
+Categories
+npx sequelize-cli model:generate --name Category --attributes name:string,parentId:integer
+
+Address
+npx sequelize-cli model:generate --name Address --attributes street:string,city:string,state:string,zipcode:string,userId:integer
+
+Users
+npx sequelize-cli model:generate --name User --attributes name:string,email:string,password:string,dob:string,profile_picture_url:string,gender:string,contact_no:string
+
+
+
+npx sequelize-cli init
+npx sequelize-cli db:migrate
+npx sequelize-cli db:migrate:undo
+npx sequelize-cli db:migrate:undo:all
