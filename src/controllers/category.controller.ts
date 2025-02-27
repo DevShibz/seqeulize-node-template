@@ -38,6 +38,24 @@ export class CategoryController {
       res.status(500).json({ message: 'Something went wrong', error: error.message });
     }
   }
+
+  async getCategories(req: Request, res: Response) {
+    try {
+      // Get all categories with their images
+      const categories = await Category.findAll({
+        include: [
+          {
+            model: Image,
+          },
+        ],
+      });
+  
+      // Return the categories with their images as JSON
+      res.status(200).json(categories);
+    } catch (error: any) {
+      res.status(500).json({ message: 'Something went wrong', error: error.message });
+    }
+  }
   
 
   async createCategory(req: Request, res: Response) {

@@ -1,0 +1,14 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()" class="pt-20 max-w-lg mx-auto bg-white p-8 rounded-lg shadow-md space-y-6">
+    <div *ngFor="let field of fields" class="mb-4">
+        <label class="block text-gray-700 text-sm font-medium mb-2">{{ field.label }}</label>
+        <ng-container *ngIf="field.type === 'dropdown'; else inputField">
+            <select [formControlName]="field.key" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md">
+                <option *ngFor="let option of field.options" [value]="option.value">{{ option.label }}</option>
+            </select>
+        </ng-container>
+        <ng-template #inputField>
+            <input [type]="field.type" [formControlName]="field.key" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md">
+        </ng-template>
+    </div>
+    <button type="submit" class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Submit</button>
+</form>

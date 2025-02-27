@@ -6,5 +6,6 @@ const controller = new CategoryController();
 
 router.get('/getAllCategories',controller.getAllCategories)
 router.post('/addCategory',controller.createCategory)
+router.get('/getCategories',controller.getCategories)
 
 export default router;

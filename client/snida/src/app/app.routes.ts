@@ -6,15 +6,21 @@ import { BannerComponent } from '../pages/banner/banner.component';
 import { ImagesComponent } from '../pages/images/images.component';
 import { ProductImageComponent } from '../pages/product-image/product-image.component';
 import { UsersComponent } from '../pages/users/users.component';
+import { CreateCategoryComponent } from '../pages/categories/create-category/create-category.component';
+import { ViewCategoryComponent } from '../pages/categories/view-category/view-category.component';
 
 export const routes: Routes = [
     { path: 'home', component: HomeComponent },
-    {path: 'categories', component: CategoriesComponent},
-    {path: '', redirectTo: '/home', pathMatch: 'full'},
-    {path:'products',component:ProductComponent},
-    {path:'banner',component:BannerComponent},
-    {path:'images',component:ImagesComponent},
-    {path:'product_images',component:ProductImageComponent},
-    {path: 'users', component:UsersComponent}
-
+    {
+        path: 'categories', component: CategoriesComponent, children: [
+            { path: '', component: ViewCategoryComponent },
+            { path: 'create', component: CreateCategoryComponent }
+        ]
+    },
+    { path: '', redirectTo: '/home', pathMatch: 'full' },
+    { path: 'products', component: ProductComponent },
+    { path: 'banner', component: BannerComponent },
+    { path: 'images', component: ImagesComponent },
+    { path: 'product_images', component: ProductImageComponent },
+    { path: 'users', component: UsersComponent }
 ];
